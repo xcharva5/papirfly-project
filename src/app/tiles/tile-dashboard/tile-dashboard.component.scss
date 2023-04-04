@@ -3,6 +3,34 @@
     padding-bottom: 215;
 }
 
+.tile-dashboard__extra-text {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-family: Poppins;
+    font-size: 10px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #9fa7bb;   
+}
+
+.tile-dashboard__title {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-family: Poppins;
+    font-size: 10px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #9fa7bb;   
+}
+
 .tile-dashboard__list {
     margin-bottom: 30px;
 }
@@ -10,3 +38,4 @@
 .tile-dashboard__settings {
     //
 }
+

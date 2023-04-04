@@ -1,10 +1,10 @@
 <div class="tile-dashboard container text-center">
     <div class="tile-dashboard__header">
-        <h1 *ngIf="_dashboardTitle">{{ _dashboardTitle }}</h1>
-        <h2>{{ _dashboardSubtitle }}</h2>
+        <h2 *ngIf="extraText" class="tile-dashboard__extra-text">{{ extraText }}</h2>
+        <h1 *ngIf="title">{{ title }}</h1>
     </div>
     <div class="tile-dashboard__list">
-        <app-tile-list [tiles]="_tiles"></app-tile-list>
+        <app-tile-list [tiles]="tiles" [layoutSetting]="layoutSetting"></app-tile-list>
     </div>
     <div class="tile-dashboard__settings text-center">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">

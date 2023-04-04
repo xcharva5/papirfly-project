@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 
 export interface Tile {
-  title: string;
-  size: number;
+  text: string;
   url: string;
 }
+
+export type TileRow = Tile[]; 
+
+export type LayoutSetting = "33/33/33" | "25/25/50";
 
 @Component({
   selector: 'app-tile-dashboard',
@@ -12,40 +15,36 @@ export interface Tile {
   styleUrls: ['./tile-dashboard.component.scss']
 })
 export class TileDashboardComponent {
-  _dashboardTitle = "";
-  _dashboardSubtitle = "Get Inspired";
-
-  _tiles: Tile[] = [
+  tiles: Tile[] = [
     {
-      title: "Styles",
-      size: 33,
+      text: "Styles",
       url: "http://www.seznam.cz"
     },
     {
-      title: "Print Templates",
-      size: 33,
+      text: "Print Templates",
       url: "http://www.seznam.cz"
     },
     {
-      title: "Colors",
-      size: 33,
+      text: "Colors",
       url: "http://www.seznam.cz"
     },
     {
-      title: "Photos",
-      size: 33,
+      text: "Photos",
       url: "http://www.seznam.cz"
     },
     {
-      title: "Videos",
-      size: 33,
+      text: "Videos",
       url: "http://www.seznam.cz"
     },
     {
-      title: "Shop",
-      size: 33,
+      text: "Shop",
       url: "http://www.seznam.cz"
-    }    
+    },
+     
   ]
+
+  title = "Get Inspired";
+  extraText = "Extra Text";
+  layoutSetting: LayoutSetting = "25/25/50";
 
 }
