@@ -1,0 +1,5 @@
+<div class="tile-list">
+    <div *ngFor="let tile of tiles" class="tile-list__item" >
+        <a [href]="'http://www.seznam.cz'" [target]="tile.url">{{ tile.title }}</a>
+    </div>
+</div>
