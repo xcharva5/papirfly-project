@@ -1,7 +1,7 @@
 <div *ngFor="let row of tileGrid; let odd = odd" class="row" [ngStyle]="{'height.px': rowHeight}">
     <ng-container [ngSwitch]="layoutSetting">
         <ng-container *ngSwitchCase="'33/33/33'">
-            <div *ngFor="let tile of row" class="item col-4 d-flex align-items-center justify-content-center">
+            <div *ngFor="let tile of row" class="item col-4 d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}">
                 <!-- <img class="item__image" src="../../../assets/img_snow_wide.jpg" alt="Tile Image">
                 <div class="centered">Centered Text</div> -->
                 {{ tile.text }}
@@ -9,14 +9,26 @@
         </ng-container>
         <ng-container *ngSwitchCase="'25/25/50'">
             <ng-container *ngIf="odd; else even">
-                <div *ngIf="row[0] as tile" class="item col-3 d-flex align-items-center justify-content-center">{{ tile.text }}</div>
-                <div *ngIf="row[1] as tile" class="item col-3 d-flex align-items-center justify-content-center">{{ tile.text }}</div>
-                <div *ngIf="row[2] as tile" class="item col-6 d-flex align-items-center justify-content-center">{{ tile.text }}</div>                
+                <div *ngIf="row[0] as tile" class="item col-3 d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}">
+                    {{ tile.text }}
+                </div>
+                <div *ngIf="row[1] as tile" class="item col-3 d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}">
+                    {{ tile.text }}
+                </div>
+                <div *ngIf="row[2] as tile" class="item col-6 d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}">
+                    {{ tile.text }}
+                </div>                
             </ng-container>
             <ng-template #even>
-                <div *ngIf="row[0] as tile" class="item col-6 d-flex align-items-center justify-content-center">{{ tile.text }}</div>
-                <div *ngIf="row[1] as tile" class="item col-3 d-flex align-items-center justify-content-center">{{ tile.text }}</div>
-                <div *ngIf="row[2] as tile" class="item col-3 d-flex align-items-center justify-content-center">{{ tile.text }}</div> 
+                <div *ngIf="row[0] as tile" class="item col-6 d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}">
+                    {{ tile.text }}
+                </div>
+                <div *ngIf="row[1] as tile" class="item col-3 d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}">
+                    {{ tile.text }}
+                </div>
+                <div *ngIf="row[2] as tile" class="item col-3 d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}">
+                    {{ tile.text }}
+                </div> 
             </ng-template>
         </ng-container>
     </ng-container>

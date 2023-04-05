@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 export interface Tile {
   text: string;
   url: string;
+  color: string;
 }
 
 export type TileRow = Tile[]; 
@@ -18,27 +19,33 @@ export class TileDashboardComponent {
   tiles: Tile[] = [
     {
       text: "Styles",
-      url: "http://www.seznam.cz"
+      url: "http://www.seznam.cz",
+      color: "#33cccc"
     },
     {
       text: "Print Templates",
-      url: "http://www.seznam.cz"
+      url: "http://www.seznam.cz",
+      color: "#33cccc"
     },
     {
       text: "Colors",
-      url: "http://www.seznam.cz"
+      url: "http://www.seznam.cz",
+      color: "#33cccc"
     },
     {
       text: "Photos",
-      url: "http://www.seznam.cz"
+      url: "http://www.seznam.cz",
+      color: "#33cccc"
     },
     {
       text: "Videos",
-      url: "http://www.seznam.cz"
+      url: "http://www.seznam.cz",
+      color: "#33cccc"
     },
     {
       text: "Shop",
-      url: "http://www.seznam.cz"
+      url: "http://www.seznam.cz",
+      color: "#33cccc"
     },
      
   ]
