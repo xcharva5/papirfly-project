@@ -1,121 +1,12 @@
-<div class="tile-dashboard container text-center">
+<div class="tile-dashboard container">
     <div class="tile-dashboard__header">
         <h2 *ngIf="extraText" class="tile-dashboard__extra-text">{{ extraText }}</h2>
-        <h1 *ngIf="title">{{ title }}</h1>
+        <h1 *ngIf="title" class="tile-dashboard__title">{{ title }}</h1>
     </div>
     <div class="tile-dashboard__list">
         <app-tile-list [tiles]="tiles" [layoutSetting]="layoutSetting"></app-tile-list>
     </div>
-    <div class="tile-dashboard__settings text-center">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#settingsModal">
-            <i class="bi bi-gear-fill"></i>
-        </button>
+    <div class="tile-dashboard__settings">
+        <app-tile-settings [tiles]="tiles"></app-tile-settings>
     </div>
 </div>
-
-<div class="modal" id="settingsModal">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <div class="modal-body">
-            <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
-                <div class="row">
-                    <div class="col-4 settings__left">
-                        <div class="settings__header">
-                            <i class="bi bi-columns-gap settings__header-icon"></i>
-                            <span class="settings__header-text">Tiles settings</span>
-                        </div>
-
-                        <div class="settings__dropdown">
-                            <label for="layoutSetting" class="form-label settings__dropdown-label">Display layout</label>
-                            <select class="form-select form-select-sm" id="layoutSetting" formControlName="layoutType">
-                                <option selected value="33/33/33" [ngValue]="'33/33/33'">33/33/33</option>
-                                <option value="25/25/50" [ngValue]="'25/25/50'">25/25/50</option>
-                            </select>
-                        </div>
-
-                        <hr class="hr" />
-
-                        <div class="d-flex align-items-center settings__text">
-                            <label for="title" class="form-label settings__text-label">Title</label>
-                            <input type="text" class="form-control form-control-sm" id="title" placeholder="Title value" formControlName="title">
-                        </div>
-                        <div class="d-flex align-items-center settings__text">
-                            <label for="subtitle" class="form-label settings__text-label">Subtitle</label>
-                            <input type="text" class="form-control form-control-sm" id="subtitle" placeholder="Subtitle value" formControlName="subtitle">
-                        </div>
-
-                        <hr class="hr" />
-
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="form-check form-switch">
-                                    <label class="form-check-label settings__switch-label" for="flexSwitchCheckDefault">Load all</label>
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" formControlName="loadAllTiles" checked>                            
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="d-flex align-items-center settings__number">
-                                    <label for="visibleTiles" class="form-label settings__text-label">Visible tiles</label>
-                                    <input type="text" class="form-control form-control-sm" id="displayedTiles" placeholder="6" formControlName="visibleTiles">
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr class="hr" />
-
-                        <button type="submit" class="btn btn-primary settings__submit-button">Update</button>
-                    </div>
-                    <div class="col-8 settings__right">
-                        <div class="row">
-                            <div class="col-10">Tiles</div>
-                            <div class="col-2">
-                                <button class="btn btn-primary" (click)="addTile()">+ Add</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th>
-                                        <i class="bi bi-sort-down"></i>
-                                    </th>
-                                    <th>BG</th>
-                                    <th>Text</th>
-                                    <th>Link</th>
-                                    <th></th>
-                                    <th>
-                                        <i class="bi bi-caret-down-fill"></i>
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr *ngFor="let tile of tiles">
-                                    <td>
-                                        <i class="bi bi-list settings__clickable-icon"></i>
-                                    </td>
-                                    <td>
-                                        <input type="color" class="form-control form-control-color form-control-sm" id="exampleColorInput" [value]="tile.color" title="Choose your color">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control form-control-sm" id="tileText" placeholder="Tile text" [value]="tile.text">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control form-control-sm" id="tileUrl" placeholder="Tile URL" [value]="tile.url">
-                                    </td>
-                                    <td>
-                                        <i class="bi bi-trash3-fill settings__clickable-icon"></i>
-                                    </td>
-                                    <td>
-                                        <i class="bi bi-three-dots settings__clickable-icon"></i>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>  
-      </div>
-    </div>
-  </div>

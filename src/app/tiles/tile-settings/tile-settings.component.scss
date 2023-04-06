@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap');
+
+$light-gray: #e2e7ee;
+$gray: #516173;
+
+:host {
+    font-family: 'Inter', sans-serif;
+}
+
+/**
+* SETTINGS BTN
+*/
+.settings-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #2f3748;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+    transition: all 0.2s;
+}
+
+.settings-btn:hover {
+    transform: scale(1.3);
+}
+
+.settings-btn-icon {
+    color: #fff;
+}
+
+/**
+* SETTINGS MODAL
+*/
+.modal-body {
+    padding: 0;
+}
+
+/* Left */
+.settings__left {
+    padding-right: 0;
+    border-right: 1px solid $light-gray;
+    text-align: left;
+}
+
+.settings__header {
+    border-bottom: 1px solid $light-gray;
+    padding: 15px 20px;
+}
+
+.settings__header-icon {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+}
+
+.settings__header-text {
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.settings__content {
+    padding: 15px 20px;
+}
+
+.settings__dropdown-input {
+    width: 60%;
+}
+
+.settings__dropdown-label {
+    font-size: 13px;
+    color: $gray;
+}
+
+.hr {
+    color: $light-gray;
+}
+
+.settings__category-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: #9fa7bb;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.settings__text-input {
+    margin-bottom: 14px;
+}
+
+.settings__text-label {
+    margin-bottom: 0;
+    width: 50%;
+    font-size: 13px;
+    line-height: 21px;
+}
+
+.settings__switch-label {
+    font-size: 13px;
+    line-height: 21px;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.settings__footer {
+    border-top: 1px solid $light-gray;
+    padding: 15px 20px;
+}
+
+.settings__submit-button {
+    width: 100%;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Right */
+.settings__close-btn {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.settings__clickable-icon {
+    cursor: pointer;
+    color: #9fa7bb;
+}
+
+.settings__right {
+    padding: 15px 20px;
+    background-color: #f9fafb;
+    
+}
+
+.settings__right-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.settings__right-header__title {
+    font-size: 13px;
+    color: #516173;
+}
+
+.table {
+    text-align: left;
+    border: 1px solid $light-gray;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+thead {
+    background-color: #f1f4f8;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #516173
+}
+

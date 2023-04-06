@@ -1,6 +1,7 @@
 .tile-dashboard {
     padding-top: 101px;
     padding-bottom: 215;
+    text-align: center;
 }
 
 .tile-dashboard__extra-text {
@@ -13,7 +14,6 @@
     font-style: normal;
     line-height: 1.6;
     letter-spacing: 1px;
-    text-align: center;
     color: #9fa7bb;   
 }
 
@@ -27,7 +27,6 @@
     font-style: normal;
     line-height: 1.6;
     letter-spacing: 1px;
-    text-align: center;
     color: #9fa7bb;   
 }
 
@@ -36,77 +35,4 @@
 }
 
 .tile-dashboard__settings {
-    //
-}
-
-/*
-SETTINGS
-*/
-
-.settings__left {
-    border-right: 1px solid #e2e7ee;
-}
-
-.settings__right {
-    padding: 21px;
-
-}
-
-.settings__header {
-    margin-bottom: 10px;
-}
-
-.settings__header-icon {
-    margin-right: 10px;
-    width: 16px;
-    height: 16px;
-}
-
-.settings__header-text {
-    text-transform: uppercase;
-    font-size: 14px;
-}
-
-.settings__dropdown {
-    width: 50%;
-}
-
-.settings__dropdown-label {
-    font-size: 13px;
-    line-height: 21px;
-}
-
-.settings__text {
-    margin-bottom: 14px;
-}
-
-.settings__text-label {
-    margin-bottom: 0;
-    width: 50%;
-    font-size: 13px;
-    line-height: 21px;
-}
-
-.settings__switch-label {
-    margin-bottom: 0;
-    width: 50%;
-    font-size: 13px;
-    line-height: 21px;
-}
-
-.card {
-    margin-bottom: 23px;
-}
-
-.card-body {
-    padding: 10px;
-}
-
-.settings__clickable-icon {
-    cursor: pointer;
-    color: #9fa7bb;
-}
-
-.settings__submit-button {
-    width: 100%;
 }
