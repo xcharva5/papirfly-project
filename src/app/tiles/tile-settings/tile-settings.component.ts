@@ -48,6 +48,10 @@ export class TileSettingsComponent implements OnInit, OnChanges {
     this.tilesFormArray.push(newTile);
   }
 
+  removeTile(tileIndex: number): void {
+    this.tilesFormArray.removeAt(tileIndex);
+  }
+
   onSubmit(): void {
     const generalSettings: TileGeneralSettings = {
       displayLayout: this.settingsForm.controls['displayLayout'].value,
