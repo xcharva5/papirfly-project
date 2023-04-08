@@ -7,6 +7,6 @@
         <app-tile-list [tiles]="tiles" [layoutSetting]="generalSettings.displayLayout"></app-tile-list>
     </div>
     <div class="tile-dashboard__settings">
-        <app-tile-settings [generalSettings]="generalSettings" [tiles]="tiles"></app-tile-settings>
+        <app-tile-settings [generalSettings]="generalSettings" [tiles]="tiles" (submittedForm)="obtainSettings($event)"></app-tile-settings>
     </div>
 </div>

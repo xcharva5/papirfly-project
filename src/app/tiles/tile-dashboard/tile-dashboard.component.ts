@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 export interface Tile {
   text: string;
@@ -68,6 +68,10 @@ export class TileDashboardComponent {
   ]
 
   constructor(private fb: FormBuilder) { }
+
+  obtainSettings(general: TileGeneralSettings): void {
+    this.generalSettings = general;
+  }
 
   // addTile(): void {
   //   const newTile = this.fb.group(

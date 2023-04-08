@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Tile, TileGeneralSettings } from '../tile-dashboard/tile-dashboard.component';
 
@@ -10,6 +10,7 @@ import { Tile, TileGeneralSettings } from '../tile-dashboard/tile-dashboard.comp
 export class TileSettingsComponent implements OnInit, OnChanges {
   @Input() generalSettings!: TileGeneralSettings;
   @Input() tiles!: Tile[];
+  @Output() submittedForm = new EventEmitter<TileGeneralSettings>();
 
   availableLayouts = ["33/33/33", "25/25/50"];
   settingsForm: FormGroup = new FormGroup({});
@@ -40,7 +41,14 @@ export class TileSettingsComponent implements OnInit, OnChanges {
   }
 
   onSubmit(): void {
-    console.log("Submit setting changes");
+    const generalSettings: TileGeneralSettings = {
+      displayLayout: this.settingsForm.controls['displayLayout'].value,
+      title: this.settingsForm.controls['title'].value,
+      subtitle: this.settingsForm.controls['subtitle'].value,
+      loadAllTiles: this.settingsForm.controls['loadAllTiles'].value,
+      visibleTiles: this.settingsForm.controls['visibleTiles'].value,
+    }
+    this.submittedForm.emit(generalSettings);
   }
 
   private _mapInputsToForm(): void {
