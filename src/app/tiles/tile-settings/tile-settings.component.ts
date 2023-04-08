@@ -38,6 +38,14 @@ export class TileSettingsComponent implements OnInit, OnChanges {
 
   addTile(): void {
     console.log("Add new tile");
+    const newTile = this.fb.group(
+      {
+        text: ['New tile', Validators.required],
+        url: ['https://www.papirfly.com/', Validators.required],
+        color: ['#33cccc', Validators.required],
+      }
+    );
+    this.tilesFormArray.push(newTile);
   }
 
   onSubmit(): void {

@@ -37,32 +37,32 @@ export class TileDashboardComponent {
   tiles: Tile[] = [
     {
       text: "Styles",
-      url: "http://www.seznam.cz",
+      url: "https://www.papirfly.com/",
       color: "#33cccc"
     },
     {
       text: "Print Templates",
-      url: "http://www.seznam.cz",
+      url: "https://www.papirfly.com/",
       color: "#33cccc"
     },
     {
       text: "Colors",
-      url: "http://www.seznam.cz",
+      url: "https://www.papirfly.com/",
       color: "#33cccc"
     },
     {
       text: "Photos",
-      url: "http://www.seznam.cz",
+      url: "https://www.papirfly.com/",
       color: "#33cccc"
     },
     {
       text: "Videos",
-      url: "http://www.seznam.cz",
+      url: "https://www.papirfly.com/",
       color: "#33cccc"
     },
     {
       text: "Shop",
-      url: "http://www.seznam.cz",
+      url: "https://www.papirfly.com/",
       color: "#33cccc"
     },     
   ]
@@ -73,14 +73,4 @@ export class TileDashboardComponent {
     this.generalSettings = general;
   }
 
-  // addTile(): void {
-  //   const newTile = this.fb.group(
-  //     {
-  //       text: ['New tile'],
-  //       url: [''],
-  //       color: ['#33cccc'],
-  //     }
-  //   );
-  //   this.tilesFormArray.push(newTile);
-  // }
 }

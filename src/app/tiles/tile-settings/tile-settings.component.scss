@@ -142,6 +142,10 @@ $gray: #516173;
     color: #516173;
 }
 
+.table-responsive {
+    max-height: 360px;
+}
+
 .table {
     text-align: left;
     border: 1px solid $light-gray;
