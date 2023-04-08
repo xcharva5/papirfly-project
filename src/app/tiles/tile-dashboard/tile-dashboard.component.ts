@@ -7,8 +7,15 @@ export interface Tile {
   color: string;
 }
 
-export type TileRow = Tile[]; 
+export interface TileGeneralSettings {
+  displayLayout: LayoutSetting;
+  title: string;
+  subtitle: string;
+  loadAllTiles: boolean;
+  visibleTiles: number;
+}
 
+export type TileRow = Tile[]; 
 export type LayoutSetting = "33/33/33" | "25/25/50";
 
 @Component({
@@ -17,6 +24,16 @@ export type LayoutSetting = "33/33/33" | "25/25/50";
   styleUrls: ['./tile-dashboard.component.scss']
 })
 export class TileDashboardComponent {
+  generalSettings: TileGeneralSettings = {
+    displayLayout: "25/25/50",
+    // 33/33/33
+    // 25/25/50
+    title: "Get Inspired",
+    subtitle: "Extra Text",
+    loadAllTiles: true,
+    visibleTiles: 6,
+  }
+
   tiles: Tile[] = [
     {
       text: "Styles",
@@ -47,50 +64,19 @@ export class TileDashboardComponent {
       text: "Shop",
       url: "http://www.seznam.cz",
       color: "#33cccc"
-    },
-     
+    },     
   ]
-
-  title = "Get Inspired";
-  extraText = "Extra Text";
-  layoutSetting: LayoutSetting = "25/25/50";
-
-  settingsForm = this.fb.group({
-    layoutType: ['33/33/33'],
-    title: ['Get Inspired'],
-    subtitle: ['Extra Text'],
-    loadAllTiles: [true],
-    visibleTiles: [{value: 6, disabled: true}],
-    tiles: this.fb.array([
-      // this.fb.group({
-      //   order: [''],
-      //   color: [''],
-      //   text: [''],
-      //   url: [''],
-      // })
-    ])
-
-  
-  })
-
-  get tilesFormArray() {
-    return this.settingsForm.controls["tiles"] as FormArray;
-  }
 
   constructor(private fb: FormBuilder) { }
 
-  onSubmit(): void {
-    console.warn(this.settingsForm.value);
-  }
-
-  addTile(): void {
-    const newTile = this.fb.group(
-      {
-        text: ['New tile'],
-        url: [''],
-        color: ['#33cccc'],
-      }
-    );
-    this.tilesFormArray.push(newTile);
-  }
+  // addTile(): void {
+  //   const newTile = this.fb.group(
+  //     {
+  //       text: ['New tile'],
+  //       url: [''],
+  //       color: ['#33cccc'],
+  //     }
+  //   );
+  //   this.tilesFormArray.push(newTile);
+  // }
 }

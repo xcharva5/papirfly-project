@@ -1,12 +1,12 @@
 <div class="tile-dashboard container">
     <div class="tile-dashboard__header">
-        <h2 *ngIf="extraText" class="tile-dashboard__extra-text">{{ extraText }}</h2>
-        <h1 *ngIf="title" class="tile-dashboard__title">{{ title }}</h1>
+        <h2 *ngIf="generalSettings.title" class="tile-dashboard__extra-text">{{ generalSettings.title }}</h2>
+        <h1 *ngIf="generalSettings.subtitle" class="tile-dashboard__title">{{ generalSettings.subtitle }}</h1>
     </div>
     <div class="tile-dashboard__list">
-        <app-tile-list [tiles]="tiles" [layoutSetting]="layoutSetting"></app-tile-list>
+        <app-tile-list [tiles]="tiles" [layoutSetting]="generalSettings.displayLayout"></app-tile-list>
     </div>
     <div class="tile-dashboard__settings">
-        <app-tile-settings [tiles]="tiles"></app-tile-settings>
+        <app-tile-settings [generalSettings]="generalSettings" [tiles]="tiles"></app-tile-settings>
     </div>
 </div>
