@@ -1,7 +1,7 @@
 <div *ngFor="let row of tileGrid; let odd = odd" class="row" [ngStyle]="{'height.px': rowHeight}">
     <ng-container [ngSwitch]="layoutSetting">
         <ng-container *ngSwitchCase="'33/33/33'">
-            <div *ngFor="let tile of row" class="item-wrapper col-4 ">
+            <div *ngFor="let tile of row" class="item-wrapper col-sm-4">
                 <div class="item d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}" (click)="navigateToUrl(tile.url)">
                     {{ tile.text }}
                 </div>
@@ -9,34 +9,34 @@
         </ng-container>
         <ng-container *ngSwitchCase="'25/25/50'">
             <ng-container *ngIf="odd; else even">
-                <div *ngIf="row[0] as tile" class="item-wrapper col-3">
+                <div *ngIf="row[0] as tile" class="item-wrapper col-sm-3">
                     <div class="item d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}" (click)="navigateToUrl(tile.url)">
                         {{ tile.text }}
                     </div>
                 </div>
-                <div *ngIf="row[1] as tile" class="item-wrapper col-3">
+                <div *ngIf="row[1] as tile" class="item-wrapper col-sm-3">
                     <div class="item d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}" (click)="navigateToUrl(tile.url)">
                         {{ tile.text }}
                     </div>
                 </div>
-                <div *ngIf="row[2] as tile" class="item-wrapper col-6">
+                <div *ngIf="row[2] as tile" class="item-wrapper col-sm-6">
                     <div class="item d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}" (click)="navigateToUrl(tile.url)">
                         {{ tile.text }}
                     </div>
                 </div>                
             </ng-container>
             <ng-template #even>
-                <div *ngIf="row[0] as tile" class="item-wrapper col-6">
+                <div *ngIf="row[0] as tile" class="item-wrapper col-sm-6">
                     <div class="item d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}" (click)="navigateToUrl(tile.url)">
                         {{ tile.text }}
                     </div>
                 </div>
-                <div *ngIf="row[1] as tile" class="item-wrapper col-3">
+                <div *ngIf="row[1] as tile" class="item-wrapper col-sm-3">
                     <div class="item d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}" (click)="navigateToUrl(tile.url)">
                         {{ tile.text }}
                     </div>
                 </div>
-                <div *ngIf="row[2] as tile" class="item-wrapper col-3">
+                <div *ngIf="row[2] as tile" class="item-wrapper col-sm-3">
                     <div class="item d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}" (click)="navigateToUrl(tile.url)">
                         {{ tile.text }}
                     </div>
