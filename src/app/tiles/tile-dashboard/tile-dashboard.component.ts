@@ -15,6 +15,11 @@ export interface TileGeneralSettings {
   visibleTiles: number;
 }
 
+export interface ITileSettings {
+  generalSettings: TileGeneralSettings;
+  tiles: Tile[];
+}
+
 export type TileRow = Tile[]; 
 export type LayoutSetting = "33/33/33" | "25/25/50";
 
@@ -82,7 +87,6 @@ export class TileDashboardComponent {
   constructor(private fb: FormBuilder) { }
 
   obtainSettings(settings: { generalSettings: TileGeneralSettings, tiles: Tile[] }): void {
-    console.log("obtaining settings");
     this.generalSettings = settings.generalSettings;
     this.tiles = settings.tiles;
   }

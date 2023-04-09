@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Tile, TileGeneralSettings } from '../tile-dashboard/tile-dashboard.component';
+import { TilesService } from '../tiles.service';
 declare var window: any;
 
 @Component({
@@ -29,8 +30,10 @@ export class TileSettingsComponent implements OnInit, OnChanges {
     return this.settingsForm.controls['loadAllTiles'];
   }
 
-  constructor(private fb: FormBuilder) {    
-  }
+  constructor(
+    private fb: FormBuilder,
+    private tilesService: TilesService
+  ) { }
 
   ngOnInit(): void {
     this.settingsModal = new window.bootstrap.Modal(
@@ -38,7 +41,6 @@ export class TileSettingsComponent implements OnInit, OnChanges {
     );
 
     this.settingsForm.controls['loadAllTiles'].valueChanges.subscribe(loadAllTiles => {
-      console.log(loadAllTiles);
       if (loadAllTiles) {
         this.visibleTilesFormControl.disable();
       } else {
@@ -78,6 +80,7 @@ export class TileSettingsComponent implements OnInit, OnChanges {
     }
     const tiles: Tile[] = this.settingsForm.controls['tiles'].value;
     
+    this.tilesService.updateTileSettings({generalSettings, tiles});
     this.submittedForm.emit({ generalSettings, tiles});
   }
 
