@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Tile, TileGeneralSettings } from '../tile-dashboard/tile-dashboard.component';
+declare var window: any;
 
 @Component({
   selector: 'app-tile-settings',
@@ -10,22 +11,39 @@ import { Tile, TileGeneralSettings } from '../tile-dashboard/tile-dashboard.comp
 export class TileSettingsComponent implements OnInit, OnChanges {
   @Input() generalSettings!: TileGeneralSettings;
   @Input() tiles!: Tile[];
-  @Output() submittedForm = new EventEmitter<TileGeneralSettings>();
+  @Output() submittedForm = new EventEmitter<{ generalSettings: TileGeneralSettings, tiles: Tile[]}>();
 
   availableLayouts = ["33/33/33", "25/25/50"];
   settingsForm: FormGroup = new FormGroup({});
+  settingsModal: any;
 
   get tilesFormArray() {
     return <FormArray>this.settingsForm.get('tiles');
   }
 
-  constructor(private fb: FormBuilder) {
-    
+  get visibleTilesFormControl() {
+    return this.settingsForm.controls['visibleTiles'];
+  }
+
+  get loadAllTilesFormControl() {
+    return this.settingsForm.controls['loadAllTiles'];
+  }
+
+  constructor(private fb: FormBuilder) {    
   }
 
   ngOnInit(): void {
-    this.settingsForm.valueChanges.subscribe(form => {
-      console.log(form);
+    this.settingsModal = new window.bootstrap.Modal(
+      document.getElementById('settingsModal')
+    );
+
+    this.settingsForm.controls['loadAllTiles'].valueChanges.subscribe(loadAllTiles => {
+      console.log(loadAllTiles);
+      if (loadAllTiles) {
+        this.visibleTilesFormControl.disable();
+      } else {
+        this.visibleTilesFormControl.enable();
+      }
     })
   }
 
@@ -33,11 +51,9 @@ export class TileSettingsComponent implements OnInit, OnChanges {
     if ((changes['settingsForm'] || changes['tiles']) && this.settingsForm && this.tiles) {
       this._mapInputsToForm();
     }
-    console.log(this.settingsForm.value)
   }
 
   addTile(): void {
-    console.log("Add new tile");
     const newTile = this.fb.group(
       {
         text: ['New tile', Validators.required],
@@ -60,7 +76,16 @@ export class TileSettingsComponent implements OnInit, OnChanges {
       loadAllTiles: this.settingsForm.controls['loadAllTiles'].value,
       visibleTiles: this.settingsForm.controls['visibleTiles'].value,
     }
-    this.submittedForm.emit(generalSettings);
+    const tiles: Tile[] = this.settingsForm.controls['tiles'].value;
+    
+    this.submittedForm.emit({ generalSettings, tiles});
+  }
+
+  openSettingsModal(): void {
+    if (this.settingsForm && this.tiles) {
+      this._mapInputsToForm();
+    }
+    this.settingsModal.show();
   }
 
   private _mapInputsToForm(): void {

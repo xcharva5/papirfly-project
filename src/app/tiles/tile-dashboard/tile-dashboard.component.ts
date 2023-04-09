@@ -26,11 +26,9 @@ export type LayoutSetting = "33/33/33" | "25/25/50";
 export class TileDashboardComponent {
   generalSettings: TileGeneralSettings = {
     displayLayout: "25/25/50",
-    // 33/33/33
-    // 25/25/50
-    title: "Get Inspired",
-    subtitle: "Extra Text",
-    loadAllTiles: true,
+    title: "Extra Text",
+    subtitle: "Get Inspired",
+    loadAllTiles: false,
     visibleTiles: 6,
   }
 
@@ -38,39 +36,55 @@ export class TileDashboardComponent {
     {
       text: "Styles",
       url: "https://www.papirfly.com/",
-      color: "#33cccc"
+      color: "#6d6dff"
     },
     {
       text: "Print Templates",
       url: "https://www.papirfly.com/",
-      color: "#33cccc"
+      color: "#6d6dff"
     },
     {
       text: "Colors",
       url: "https://www.papirfly.com/",
-      color: "#33cccc"
+      color: "#6d6dff"
     },
     {
       text: "Photos",
       url: "https://www.papirfly.com/",
-      color: "#33cccc"
+      color: "#6d6dff"
     },
     {
       text: "Videos",
       url: "https://www.papirfly.com/",
-      color: "#33cccc"
+      color: "#6d6dff"
     },
     {
       text: "Shop",
       url: "https://www.papirfly.com/",
-      color: "#33cccc"
+      color: "#6d6dff"
     },     
+    {
+      text: "Shop",
+      url: "https://www.papirfly.com/",
+      color: "#6d6dff"
+    }, 
+    {
+      text: "Shop",
+      url: "https://www.papirfly.com/",
+      color: "#6d6dff"
+    }, 
   ]
+
+  get visibleTiles(): number {
+    return this.generalSettings.loadAllTiles ? this.tiles.length : this.generalSettings.visibleTiles;
+  }
 
   constructor(private fb: FormBuilder) { }
 
-  obtainSettings(general: TileGeneralSettings): void {
-    this.generalSettings = general;
+  obtainSettings(settings: { generalSettings: TileGeneralSettings, tiles: Tile[] }): void {
+    console.log("obtaining settings");
+    this.generalSettings = settings.generalSettings;
+    this.tiles = settings.tiles;
   }
 
 }

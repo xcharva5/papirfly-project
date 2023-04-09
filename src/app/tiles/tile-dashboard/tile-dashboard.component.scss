@@ -1,20 +1,11 @@
+:host {
+    font-family: 'Poppins', sans-serif;
+}
+
 .tile-dashboard {
     padding-top: 101px;
     padding-bottom: 215;
     text-align: center;
-}
-
-.tile-dashboard__extra-text {
-    margin-bottom: 0;
-    text-transform: uppercase;
-    font-family: Poppins;
-    font-size: 10px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.6;
-    letter-spacing: 1px;
-    color: #9fa7bb;   
 }
 
 .tile-dashboard__title {
@@ -23,11 +14,18 @@
     font-family: Poppins;
     font-size: 10px;
     font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
     line-height: 1.6;
     letter-spacing: 1px;
     color: #9fa7bb;   
+}
+
+.tile-dashboard__subtitle {
+    margin-bottom: 0;
+    font-family: Poppins;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 1.24;
+    color: #232323;  
 }
 
 .tile-dashboard__list {
