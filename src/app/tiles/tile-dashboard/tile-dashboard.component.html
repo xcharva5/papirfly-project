@@ -3,10 +3,12 @@
         <h2 *ngIf="generalSettings.title" class="tile-dashboard__title">{{ generalSettings.title }}</h2>
         <h1 *ngIf="generalSettings.subtitle" class="tile-dashboard__subtitle">{{ generalSettings.subtitle }}</h1>
     </div>
-    <div class="tile-dashboard__list">
-        <app-tile-list [tiles]="tiles" [layoutSetting]="generalSettings.displayLayout" [visibleTiles]="visibleTiles"></app-tile-list>
-    </div>
-    <div class="tile-dashboard__settings">
-        <app-tile-settings [generalSettings]="generalSettings" [tiles]="tiles" (submittedForm)="obtainSettings($event)"></app-tile-settings>
-    </div>
+    <ng-container *ngIf="tiles$ | async as tiles">
+        <div class="tile-dashboard__list">
+            <app-tile-list [tiles]="tiles" [generalSettings]="generalSettings"></app-tile-list>
+        </div>
+        <div class="tile-dashboard__settings">
+            <app-tile-settings [generalSettings]="generalSettings" [tiles]="tiles" (submittedForm)="obtainSettings($event)"></app-tile-settings>
+        </div>
+    </ng-container>
 </div>

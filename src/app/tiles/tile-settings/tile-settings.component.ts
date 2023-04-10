@@ -11,7 +11,7 @@ declare var window: any;
 })
 export class TileSettingsComponent implements OnInit, OnChanges {
   @Input() generalSettings!: TileGeneralSettings;
-  @Input() tiles!: Tile[];
+  @Input() tiles: Tile[] | null = null;
   @Output() submittedForm = new EventEmitter<{ generalSettings: TileGeneralSettings, tiles: Tile[]}>();
 
   availableLayouts = ["33/33/33", "25/25/50"];
@@ -98,7 +98,7 @@ export class TileSettingsComponent implements OnInit, OnChanges {
       subtitle: [this.generalSettings.subtitle],
       loadAllTiles: [this.generalSettings.loadAllTiles, Validators.required],
       visibleTiles: [this.generalSettings.visibleTiles],
-      tiles: this.fb.array(this._mapTilesToForm(this.tiles))  
+      tiles: this.fb.array(this._mapTilesToForm(this.tiles ?? []))  
     })
   }
 

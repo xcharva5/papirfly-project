@@ -1,14 +1,21 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ITileSettings, Tile, TileGeneralSettings } from './tile-dashboard/tile-dashboard.component';
-import { Observable, catchError, of, throwError } from 'rxjs';
+import { Observable, Subject, catchError, distinctUntilChanged, of } from 'rxjs';
+
+import { ITileSettings, Tile } from './tile-dashboard/tile-dashboard.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TilesService {
+  private _tiles: Subject<Tile[]> = new Subject<Tile[]>()
+  public readonly tiles: Observable<Tile[]> = this._tiles.pipe(distinctUntilChanged())
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getTiles().subscribe(tiles => {
+      this._tiles.next(tiles);
+    })
+  }
 
   updateTileSettings(settings: ITileSettings): Observable<ITileSettings> {
     const fakeBackendUrl = "https://backend.server.net";
@@ -24,5 +31,13 @@ export class TilesService {
         console.error('There was an error!', error);
         return of();
     }));
+  }
+
+  getTiles(): Observable<Tile[]> {
+    return this.http.get<Tile[]>("/assets/fake-tiles.json");
+  }
+
+  setTiles(tiles: Tile[]): void {
+    this._tiles.next(tiles);
   }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { TilesService } from '../tiles.service';
 
 export interface Tile {
   text: string;
@@ -37,58 +38,14 @@ export class TileDashboardComponent {
     visibleTiles: 6,
   }
 
-  tiles: Tile[] = [
-    {
-      text: "Styles",
-      url: "https://www.papirfly.com/",
-      color: "#6d6dff"
-    },
-    {
-      text: "Print Templates",
-      url: "https://www.papirfly.com/",
-      color: "#6d6dff"
-    },
-    {
-      text: "Colors",
-      url: "https://www.papirfly.com/",
-      color: "#6d6dff"
-    },
-    {
-      text: "Photos",
-      url: "https://www.papirfly.com/",
-      color: "#6d6dff"
-    },
-    {
-      text: "Videos",
-      url: "https://www.papirfly.com/",
-      color: "#6d6dff"
-    },
-    {
-      text: "Shop",
-      url: "https://www.papirfly.com/",
-      color: "#6d6dff"
-    },     
-    {
-      text: "Shop",
-      url: "https://www.papirfly.com/",
-      color: "#6d6dff"
-    }, 
-    {
-      text: "Shop",
-      url: "https://www.papirfly.com/",
-      color: "#6d6dff"
-    }, 
-  ]
+  tiles$: Observable<Tile[]> = this.tilesService.tiles;
 
-  get visibleTiles(): number {
-    return this.generalSettings.loadAllTiles ? this.tiles.length : this.generalSettings.visibleTiles;
+  constructor(private tilesService: TilesService) { 
   }
-
-  constructor(private fb: FormBuilder) { }
 
   obtainSettings(settings: { generalSettings: TileGeneralSettings, tiles: Tile[] }): void {
     this.generalSettings = settings.generalSettings;
-    this.tiles = settings.tiles;
+    this.tilesService.setTiles(settings.tiles);
   }
 
 }

@@ -1,5 +1,5 @@
 <div *ngFor="let row of tileGrid; let odd = odd" class="row" [ngStyle]="{'height.px': rowHeight}">
-    <ng-container [ngSwitch]="layoutSetting">
+    <ng-container [ngSwitch]="generalSettings.displayLayout">
         <ng-container *ngSwitchCase="'33/33/33'">
             <div *ngFor="let tile of row" class="item-wrapper col-sm-4">
                 <div class="item d-flex align-items-center justify-content-center" [ngStyle]="{'background-color': tile.color}" (click)="navigateToUrl(tile.url)">
